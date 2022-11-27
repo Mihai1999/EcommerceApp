@@ -25,7 +25,6 @@ namespace IdentityServer
 
             var builder = services.AddIdentityServer()
                 //.AddInMemoryIdentityResources(Config.IdentityResources)
-                .AddDeveloperSigningCredential()
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients);
 
