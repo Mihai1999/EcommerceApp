@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
@@ -39,7 +40,28 @@ namespace IdentityServer
 
                     // scopes that client has access to
                     AllowedScopes = { "api1" }
+                },
+
+                // JavaScript Client
+                new Client
+                {
+	                ClientId = "jsclient",
+
+					ClientName = "JavaScript Client",
+	                AllowedGrantTypes = GrantTypes.Code,
+                    RequireClientSecret = false,
+
+	                RedirectUris =           { "http://localhost:3000/app" },
+	                PostLogoutRedirectUris = { "http://localhost:3000/" },
+	                AllowedCorsOrigins =     { "http://localhost:3000/" },
+
+					AllowedScopes =
+	                {
+		                IdentityServerConstants.StandardScopes.OpenId,
+		                IdentityServerConstants.StandardScopes.Profile,
+		                "api1"
+	                }
                 }
-            };
+			};
     }
 }
